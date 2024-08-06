@@ -25,7 +25,7 @@ gaps:
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '40px'
+    top: '38px'
     right: '5px'
     bottom: '5px'
     left: '5px'
@@ -107,6 +107,11 @@ window_rules:
   - commands: ['set-floating']
     match:
       - window_process: { regex: 'chatterino|Discord' }
+
+  - commands: ['move --workspace 2']
+    match:
+      - window_process: { regex: 'chatterino|Discord' }
+
   # - window_process: { equals: 'chatterino|Discord' }
 
 binding_modes:
@@ -154,14 +159,23 @@ keybindings:
     bindings: ['alt+shift+j', 'alt+shift+down']
 
   # Resize focused window by a percentage or pixel amount.
-  - commands: ['resize --width -2%']
+  - commands: ['resize --width -1%']
     bindings: ['alt+u']
-  - commands: ['resize --width +2%']
+  - commands: ['resize --width +1%']
     bindings: ['alt+y']
-  - commands: ['resize --height +2%']
+  - commands: ['resize --height +1%']
     bindings: ['alt+o']
-  - commands: ['resize --height -2%']
+  - commands: ['resize --height -1%']
     bindings: ['alt+i']
+
+  - commands: ['resize --width -5px']
+    bindings: ['alt+shift+u']
+  - commands: ['resize --width +5px']
+    bindings: ['alt+shift+y']
+  - commands: ['resize --height +5px']
+    bindings: ['alt+shift+o']
+  - commands: ['resize --height -5px']
+    bindings: ['alt+shift+i']
 
   # As an alternative to the resize keybindings above, resize mode enables
   # resizing via arrow keys or HJKL. The binding mode is defined above with
