@@ -10,7 +10,7 @@ window/bar:
   # Width of the window in physical pixels.
   width: '{{ self.args.MONITOR_WIDTH }}'
   # Height of the window in physical pixels.
-  height: '40'
+  height: '35'
   # X-position of the window in physical pixels.
   position_x: '{{ self.args.MONITOR_X }}'
   # Y-position of the window in physical pixels.
@@ -41,7 +41,8 @@ window/bar:
     font-size: 16px;
     padding: 4px 24px;
     border-bottom: 1px solid rgb(255 255 255 / 5%);;
-    background: linear-gradient(rgb(0 0 0 / 90%), rgb(5 2 20 / 85%));
+    background: linear-gradient(rgb(0 0 0 / 55%), rgb(5 2 20 / 55%));
+    # background: linear-gradient(rgb(0 0 0 / 90%), rgb(5 2 20 / 85%));
 
     i {
       color: rgb(115 130 175 / 95%);
@@ -53,12 +54,14 @@ window/bar:
       display: flex;
       align-items: center;
 
+    # this goies in template below but it wouldnt comment out there for some reason
+    #  <i class="nf nf-custom-windows"></i>
     template/logo:
       styles: |
-        margin-right: 10px;
-        font-size: 25px;
+        margin-right: 2px;
+        font-size: 20px;
       template: |
-        <i size="30" class="nf nf-custom-windows"></i>
+        <i class="nf nf-linux-codeberg"></i>
 
     template/glazewm_workspaces:
       styles: |
@@ -68,10 +71,10 @@ window/bar:
         .workspace {
           background: rgb(255 255 255 / 5%);
           margin-right: 4px;
-          padding: 4px 8px;
+          padding: 1.5px 6px;
           color: rgb(255 255 255 / 90%);
           border: none;
-          border-radius: 2px;
+          border-radius: 5px;
           cursor: pointer;
 
           &.displayed {
