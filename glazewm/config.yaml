@@ -21,14 +21,14 @@ general:
 
 gaps:
   # Gap between adjacent windows.
-  inner_gap: '5px'
+  inner_gap: '0px'
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '60px'
-    right: '20px'
-    bottom: '20px'
-    left: '20px'
+    top: '40px'
+    right: '5px'
+    bottom: '5px'
+    left: '5px'
 
     # Original Settings
     # outer_gap:
@@ -157,7 +157,7 @@ keybindings:
   - commands: ['resize --width -2%']
     bindings: ['alt+u']
   - commands: ['resize --width +2%']
-    bindings: ['alt+p']
+    bindings: ['alt+y']
   - commands: ['resize --height +2%']
     bindings: ['alt+o']
   - commands: ['resize --height -2%']
