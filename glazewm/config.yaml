@@ -1,18 +1,25 @@
 general:
   # Commands to run when the WM has started (e.g. to run a script or launch
   # another application). Here we are running a batch script to start Zebar.
-  startup_commands: ['shell-exec %userprofile%/.glzr/zebar/my_version.bat']
+  startup_commands: ['shell-exec %userprofile%/.glzr/zebar/start.bat']
+
+  # startup_commands: ['shell-exec zebar']
+
+  # Commands to run just before the WM is shutdown.
+  # Example: The below command kills Zebar.
+  shutdown_commands: ['shell-exec taskkill /IM zebar.exe /F']
 
   # Whether to automatically focus windows underneath the cursor.
   focus_follows_cursor: false
 
   # Whether to switch back and forth between the previously focused
   # workspace when focusing the current workspace.
+  # toggle_workspace_on_refocus: true
   toggle_workspace_on_refocus: false
 
   cursor_jump:
     # Whether to automatically move the cursor on the specified trigger.
-    enabled: true
+    enabled: false
 
     # Trigger for cursor jump:
     # - 'monitor_focus': Jump when focus changes between monitors.
@@ -21,11 +28,12 @@ general:
 
 gaps:
   # Gap between adjacent windows.
-  inner_gap: '0px'
+  inner_gap: '5px'
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '38px'
+    # top: '35px'
+    top: '65px'
     right: '5px'
     bottom: '5px'
     left: '5px'
@@ -36,6 +44,7 @@ gaps:
     # right: '20px'
     # bottom: '20px'
     # left: '20px'
+  scale_with_dpi: false
 
 window_effects:
   # Visual effects to apply to the focused window.
@@ -44,13 +53,33 @@ window_effects:
     # ** Exclusive to Windows 11 due to API limitations.
     border:
       enabled: true
-      color: '#8dbcff'
+      color: '#88e1a0'
+      # color: '#8dbcff'
+      # color: '#0000ff'
+      # color: '#ff0000'
+
+    # Remove the title bar from the window's frame. Note that this can
+    # cause rendering issues for some applications.
+    hide_title_bar:
+      enabled: false
+      # enabled: true
+
+    # Change the corner style of the window's frame.
+    # ** Exclusive to Windows 11 due to API limitations.
+    corner_style:
+      enabled: true
+      # Allowed values: 'square', 'rounded', 'small_rounded'.
+      # style: 'square'
+      style: 'rounded'
 
   # Visual effects to apply to non-focused windows.
   other_windows:
     border:
-      enabled: true
+      enabled: false
       color: '#a1a1a1'
+
+    hide_title_bar:
+      enabled: false
 
 window_behavior:
   # New windows are created in this state whenever possible.
@@ -63,7 +92,8 @@ window_behavior:
   state_defaults:
     floating:
       # Whether to center floating windows by default.
-      centered: true
+      centered: false
+      # centered: true
 
       # Whether to show floating windows as always on top.
       shown_on_top: false
@@ -71,13 +101,14 @@ window_behavior:
     fullscreen:
       # Maximize the window if possible. If the window doesn't have a
       # maximize button, then it'll be fullscreen'ed normally instead.
-      maximized: false
+      maximized: true
 
       # Whether to show fullscreen windows as always on top.
       shown_on_top: false
 
 workspaces:
   - name: '1'
+    keep_alive: true
   - name: '2'
   - name: '3'
   - name: '4'
@@ -108,9 +139,9 @@ window_rules:
     match:
       - window_process: { regex: 'chatterino|Discord' }
 
-  - commands: ['move --workspace 2']
-    match:
-      - window_process: { regex: 'chatterino|Discord' }
+  # - commands: ['move --workspace 2']
+  #   match:
+  #     - window_process: { regex: 'chatterino|Discord' }
 
   # - window_process: { equals: 'chatterino|Discord' }
 
@@ -140,13 +171,13 @@ binding_modes:
 keybindings:
   # Shift focus in a given direction.
   - commands: ['focus --direction left']
-    bindings: ['alt+h', 'alt+left']
+    bindings: ['alt+left']
   - commands: ['focus --direction right']
-    bindings: ['alt+l', 'alt+right']
+    bindings: ['alt+right']
   - commands: ['focus --direction up']
-    bindings: ['alt+k', 'alt+up']
+    bindings: [alt+up']
   - commands: ['focus --direction down']
-    bindings: ['alt+j', 'alt+down']
+    bindings: ['alt+down']
 
   # Move focused window in a given direction.
   - commands: ['move --direction left']
@@ -231,7 +262,7 @@ keybindings:
   # Launch CMD terminal. Alternatively, use `shell-exec wt` or
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
   # Terminal and Git Bash respectively.
-  - commands: ['shell-exec cmd']
+  - commands: ['shell-exec wt']
     bindings: ['alt+enter']
 
   # Focus the next/previous workspace defined in `workspaces` config.
@@ -266,14 +297,14 @@ keybindings:
 
   # Move the focused window's parent workspace to a monitor in a given
   # direction.
-  - commands: ['move-workspace --direction left']
-    bindings: ['alt+shift+a']
-  - commands: ['move-workspace --direction right']
-    bindings: ['alt+shift+f']
-  - commands: ['move-workspace --direction up']
-    bindings: ['alt+shift+d']
-  - commands: ['move-workspace --direction down']
-    bindings: ['alt+shift+s']
+  # - commands: ['move-workspace --direction left']
+  #   bindings: ['alt+shift+a']
+  # - commands: ['move-workspace --direction right']
+  #   bindings: ['alt+shift+f']
+  # - commands: ['move-workspace --direction up']
+  #   bindings: ['alt+shift+d']
+  # - commands: ['move-workspace --direction down']
+  #   bindings: ['alt+shift+s']
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ['move --workspace 1', 'focus --workspace 1']
